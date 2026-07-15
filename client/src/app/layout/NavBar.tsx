@@ -33,6 +33,9 @@ export default function NavBar() {
                             <MenuItemLink to='/counter' >
                                 Counter
                             </MenuItemLink>
+                            <MenuItemLink to='/errors' >
+                                Errors
+                            </MenuItemLink>
                         </Box>
                         <MenuItem>
                             User menu
@@ -49,7 +52,7 @@ export default function NavBar() {
                                 left: 0,
                                 right: 0,
                                 height: 4
-                            }} 
+                            }}
                         />
                     ) : null}
                 </Observer>
