@@ -22,7 +22,7 @@ export default function ActivityDetailsPage() {
                 <ActivityDetailsChat />
             </Grid>
             <Grid size={4}>
-                <ActivityDetailsSideBar />
+                <ActivityDetailsSideBar activity={activity} />
             </Grid>
         </Grid>
     )
