@@ -6,11 +6,11 @@ import { useState } from 'react';
 import { Avatar, Box, Divider, ListItemIcon, ListItemText } from '@mui/material';
 import { useAccount } from '../../lib/hooks/useAccount';
 import { Link } from 'react-router';
-import { Add, Logout, Person } from '@mui/icons-material';
+import { Add, Logout, Password, Person } from '@mui/icons-material';
 
 export default function UserMenu() {
 
-    const { currentUser, logoutUser }= useAccount();
+    const { currentUser, logoutUser } = useAccount();
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
 
@@ -32,7 +32,7 @@ export default function UserMenu() {
             >
                 <Box display='flex' alignItems='center' gap={2}>
                     <Avatar src={currentUser?.imageUrl} alt='Current user image' />
-                    { currentUser?.displayName }
+                    {currentUser?.displayName}
                 </Box>
             </Button>
             <Menu
@@ -51,6 +51,12 @@ export default function UserMenu() {
                         <Person />
                     </ListItemIcon>
                     <ListItemText>My Profile</ListItemText>
+                </MenuItem>
+                <MenuItem onClick={handleClose} component={Link} to={`/change-password`}>
+                    <ListItemIcon>
+                        <Password />
+                    </ListItemIcon>
+                    <ListItemText>Change password</ListItemText>
                 </MenuItem>
                 <Divider />
                 <MenuItem onClick={() => {

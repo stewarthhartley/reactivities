@@ -91,4 +91,18 @@ public class AccountController(SignInManager<User> signInManager, IEmailSender<U
         await signInManager.SignOutAsync(); 
         return NoContent();       
     }
+
+    [HttpPost("change-password")]
+    public async Task<ActionResult> ChagePassword(ChangePasswordDto dto)
+    {
+        var user = await signInManager.UserManager.GetUserAsync(User);
+
+        if (user == null) return Unauthorized();
+
+        var result = await signInManager.UserManager.ChangePasswordAsync(user, dto.CurrentPassword, dto.NewPassword);
+
+        if (result.Succeeded) return Ok();
+
+        return BadRequest(result.Errors.First().Description);
+    }
 }
